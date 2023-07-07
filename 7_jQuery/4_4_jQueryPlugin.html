@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery plugin</title>
+</head>
+<body>
+    <a href="http://www.google.com">Go To Google!!!</a><br>
+    <a href="http://www.naver.com">Go To Naver!!!</a><br>
+    <div>
+        <p>TEST</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        // $.fn.greenify = function() {
+        //     this.css('color', 'green')
+        //     return this;
+        // }
+
+        // $('a').greenify().addClass('greenified');
+
+        (function($) {
+            $.fn.showLinkLocation = function() {
+                this.filter('a').each(function() {
+                    var link = $(this)
+                    link.append(`(${link.attr('href')})`);
+                })
+            }
+            var shade = '#3a8b89'
+
+            $.fn.greenify = function() {
+                this.css('color', shade)
+                return this;
+            }
+
+            $.fn.backgroundColorText = function(options) {
+                var settings = $.extend({
+                    // 디폴트 값
+                    color: 'red',
+                    backgroundColor: 'blue'
+                }, options)
+
+                return this.css({
+                    color: settings.color,
+                    backgroundColor: settings.backgroundColor
+                })
+            }
+        }(jQuery))
+
+        $('a').showLinkLocation()
+        $('a').greenify().addClass('greenified');
+        $('div').backgroundColorText({
+            color: '#e8bdcc',
+            backgroundColor: 'dodgerblue'
+        })
+    </script>
+</body>
+</html>
