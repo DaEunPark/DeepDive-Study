@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+<body>
+    <h1>Where do you want to go?</h1>
+    <h2>Travel Destinations</h2>
+    <p>Plan your next adventure.</p>
+    <ul id="destinations">
+        <li>Rome</li>
+        <li>
+            <ul id="france">
+                <li>Paris</li>
+            </ul>
+        </li>
+        <li class="promo">Rio</li>
+    </ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        
+        $(function () {
+            // ### 4.3 자식 선택자를 사용하여 ul 요소의 자손 중에 li 요소를 선택한다.
+            // $('#destinations > li').text('Orlando').css('color', 'red')
+
+            // ### 4.4 복합 선택자
+            $('#france > li, .promo').text('Orlando')
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+<body>
+    <ul>
+        <li class="vacation">
+            <h1>Hawaiian Vacation</h1>
+            <button>Get Price</button>
+        </li>
+        <li class="vacation">
+            <h1>Orlando Vacation</h1>
+            <button>Get Price</button>
+        </li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('button').on('click', function () {
+                var price = $('<p>From $399.99</p>')
+                // $('.vacation').append(price)
+                // $(this).after(price)
+                $(this).closest('.vacation').append(price)
+                $(this).remove()
+            })
+        })
+    </script>
+</body>
+</html>

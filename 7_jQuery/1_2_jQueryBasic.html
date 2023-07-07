@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery</title>
+  </head>
+  <body>
+    <h1 id="main-heading">What is jQuery?</h1>
+
+    <p>jQuery is the most popular JavaScript library.</p>
+
+    <h1>Why should you learn jQuery?</h1>
+
+    <p class="note">Note: jQuery functions use the DOM API (like <code>document.getElementById</code>).</p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        // var elem = document.getElementsByTagName('h1');
+        // for (var i = 0; i < elem.length; i++) {
+        //     elem[i].textContent = 'Hello';
+        // }
+        $(function () {
+            $('h1').text('Hello');
+            $('<p id="test">My <em>new</em> text</p>').appendTo('body');
+
+            // Define a plain object
+            var foo = { foo: 'bar', hello: 'world' };
+
+            // Pass it to the jQuery function
+            var $foo = $(foo);
+
+            // Accessing property values
+            var test1 = $foo.prop('foo');
+            console.log(test1); // bar
+
+            // Setting property values
+            $foo.prop('foo', 'foobar');
+
+            // Accessing property values
+            var test2 = $foo.prop('foo');
+            console.log(test2); // foobar
+        })
+    </script>
+  </body>
+</html>

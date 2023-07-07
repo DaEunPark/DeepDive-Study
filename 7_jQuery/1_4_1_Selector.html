@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+<body>
+    <h1>Where do you want to go?</h1>
+    <h2>Travel Destinations</h2>
+    <p>Plan your next adventure.</p>
+    <ul id="destinations">
+      <li>Rome</li>
+      <li>Paris</li>
+      <li class="promo">Rio</li>
+    </ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        
+        $(function () {
+            // ### 4.1 CSS 스타일의 Tag Selector를 사용하여 li 요소 3개를 선택하고 이 요소들의 텍스트를 일괄 변경한다.
+            // console.log($('li'))
+            // $('li').text('Orlando')
+
+            // ### id가 destinations인 ul 요소의 후손 중 class가 promo인 요소를 선택한다.
+            // $('#destinations .promo').text('Orlando');
+
+            // ### 4.5 가상 클래스 선택자
+            // $('#destinations li:first').css('color', 'red')
+            // $('#destinations li:last').css('color', 'blue')
+            $('#destinations li:odd').css('color', 'orange')
+            $('#destinations li:even').css('color', 'purple')
+        })
+
+
+        // ### 4.1 Pure Javascript API를 사용하여 위의 기능을 작성하면 아래와 같다.
+        // var targets = document.getElementsByTagName('li')
+        // for (let index = 0; index < targets.length; index++) {
+        //    targets[index].firstChild.nodeValue = 'Orlando';
+
+        // }
+        
+    </script>
+</body>
+</html>
