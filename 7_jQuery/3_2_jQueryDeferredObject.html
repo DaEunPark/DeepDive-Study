@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deferred</title>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        // Promise 선언
+        // var _deferred = function(param) {
+        //     var dfd = $.Deferred(); // 1
+        //     // 비동기 처리
+        //     setTimeout(function() {
+        //         // 2
+        //         param ? dfd.resolve("Resolved!") : dfd.reject(new Error("Error occurred!!"))
+        //     }, 2000)
+
+        //     // 3
+        //     return dfd.promise()
+        // }
+
+        // // Promise 실행
+        // _deferred(false)
+        // .done((data) => {
+        //     console.log(data);
+        // }).fail(error => {
+        //     console.log(error)
+        // }).always(() => {
+        //     console.log('always')
+        // })
+
+        // console.log(0);
+        // setTimeout(function() {
+        //     console.log(1)
+        //     setTimeout(function() {
+        //         console.log(2)
+        //     }, 1000)
+        // }, 1000)
+
+        function sleep(ms) {
+            var dfd = $.Deferred()
+            setTimeout(function() {
+                dfd.resolve()
+            }, ms)
+            return dfd.promise()
+        }
+
+        // console.log(0)
+        // sleep(1000).then(() => {
+        //     console.log(1);
+        //     sleep(1000).then(() => {
+        //         console.log(2);
+        //     })
+        // })
+        console.log(0)
+        sleep(1000).then(() => {
+            console.log(1);
+            return sleep(1000)
+        }).then(() => {
+            console.log(2)
+        })
+    </script>
+</body>
+</html>
