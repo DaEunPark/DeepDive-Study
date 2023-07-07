@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/ajax.css">
+    <title>LoadJson</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        // XMLHttpRequest 객체 생성
+        var req = new XMLHttpRequest();
+
+        // 비동기 방식으로 Request 오픈
+        req.open('GET', 'data/data.json', true);
+
+        // Reqeust 전송
+        req.send()
+
+        req.onreadystatechange = function () {
+            // 서버 응답
+            if (req.readyState === XMLHttpRequest.DONE) {
+
+                // 정상 응답
+                if (req.status == 200) {
+                    console.log(req.responseText);
+
+                    // Deserializing (String -> Object)
+                    var jObj = JSON.parse(req.responseText);
+                    
+                    // JSON -> HTML String
+                    var newContent = '';
+                    newContent += '<div id="tours">';
+                    newContent += '<h1>Guided Tours</h1>';
+                    newContent += '<ul>';
+                    jObj.tours.forEach(tour => {
+                        newContent += '<li class="' + tour.region + ' tour">';
+                        newContent += '<h2>' + tour.location +'</h2>';
+                        newContent += '<span class="details">' + tour.details + '</span>';
+                        newContent += '<button class="book">Book Now</button>';
+                        newContent += '</li>';
+                    });
+                    
+                    newContent += '</ul>';
+                    newContent += '</div>';
+
+                    document.getElementById('content').innerHTML = newContent
+                } else {
+                    console.log(`[${req.status}]: ${req.statusText}`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

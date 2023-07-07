@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/ajax.css">
+    <title>Load JSON getJSON</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $.getJSON("data/data.json", function(data) {
+            // JSON -> HTML String
+            var newContent = '';
+            newContent += '<div id="tours">';
+            newContent += '<h1>Guided Tours</h1>';
+            newContent += '<ul>';
+            data.tours.forEach(tour => {
+                newContent += '<li class="' + tour.region + ' tour">';
+                newContent += '<h2>' + tour.location +'</h2>';
+                newContent += '<span class="details">' + tour.details + '</span>';
+                newContent += '<button class="book">Book Now</button>';
+                newContent += '</li>';
+            });
+            
+            newContent += '</ul>';
+            newContent += '</div>';
+
+            $('#content').html(newContent)            
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/ajax.css">
+    <title>Load Html get</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $('#content').load('data/data.html', function() {
+            console.log("Load was performed...")
+        })
+    </script>
+</body>
+</html>

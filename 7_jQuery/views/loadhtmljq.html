@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/ajax.css">
+    <title>LoadHtml jQuery</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: "data/data.html",
+            cache: false
+        }).done(function(data, textStatus, jqXHR) {
+            $('#content').html(data)
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.log('fail: ', jqXHR)
+        }).always(function(data, textStatus, jqXHR) {
+            console.log('always: ', data);
+        })
+    </script>
+</body>
+</html>

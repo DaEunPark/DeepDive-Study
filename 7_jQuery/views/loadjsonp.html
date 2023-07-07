@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/ajax.css">
+    <title>LoadJsonp</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        function showTours(data) {
+            console.log(data);
+             // JSON -> HTML String
+             var newContent = '';
+                    newContent += '<div id="tours">';
+                    newContent += '<h1>Guided Tours</h1>';
+                    newContent += '<ul>';
+                    data.tours.forEach(tour => {
+                        newContent += '<li class="' + tour.region + ' tour">';
+                        newContent += '<h2>' + tour.location +'</h2>';
+                        newContent += '<span class="details">' + tour.details + '</span>';
+                        newContent += '<button class="book">Book Now</button>';
+                        newContent += '</li>';
+                    });
+                    
+                    newContent += '</ul>';
+                    newContent += '</div>';
+
+                    document.getElementById('content').innerHTML = newContent
+        }
+    </script>
+    <script src='http://poiemaweb.com/assets/data/data-jsonp.js'></script>
+</body>
+</html>
